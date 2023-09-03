@@ -8,14 +8,14 @@
 
 Console.Clear ();
 
-int SetNumber (string message)
+int SetNumber (string message)  // Метод позволяющий пользователю ввести число
 {
     Console.Write (message);
     int number = Convert.ToInt32 (Console.ReadLine ());
     return number;
 }
 
-double[,] FillMatrix (int rows, int columns, int minValue, int maxValue)
+double[,] FillMatrix (int rows, int columns, int minValue, int maxValue) // Метод заполняющий двумерный массив по заданным характеристикам
 {
     double [,] matrix = new double [rows, columns];
     var random = new Random ();
@@ -29,7 +29,7 @@ double[,] FillMatrix (int rows, int columns, int minValue, int maxValue)
     return matrix;
 }
 
-void PrintMatrix (double [,] matrix)
+void PrintMatrix (double [,] matrix)  // Метод выводящий на печать двумерный массив
 {
     for(int i = 0; i < matrix.GetLength (0); i++)
     {
