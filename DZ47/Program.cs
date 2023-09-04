@@ -29,7 +29,7 @@ double[,] FillMatrix (int rows, int columns, int minValue, int maxValue) // Ме
     return matrix;
 }
 
-void PrintMatrix (double [,] matrix)  // Метод выводящий на печать двумерный массив
+void PrintMatrix (double [,] matrix)  // Метод выводящий на печать двумерный массив с вещественными числами
 {
     for(int i = 0; i < matrix.GetLength (0); i++)
     {
