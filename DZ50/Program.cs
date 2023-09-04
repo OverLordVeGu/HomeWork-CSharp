@@ -43,46 +43,32 @@ void PrintDualMassive (int[,] matrix)     // Метод выводящий дв�
     }
 }
 
-// void CheckElement (int[,] matrix, int element)   // Метод проверяющий наличие элемента введенного пользователем в массиве
-// {
-//     for (int i = 0; i < matrix.GetLength (0); i++)
-//     {
-//         for (int j = 0; j < matrix.GetLength (1); j++)
-//         {
-//             if (matrix [i, j] == element)
-//             {
-//                 Console.WriteLine ($"Число {element} находиться на позиции matrix ({i}, {j})");
-                
-//             }
-            
-//             else if (matrix [i, j] != element);
-//             {
-//                 Console.WriteLine ($"{element} -> такого числа в массиве нет");
-//             }
-            
-//         }         
-//     }
-// }
 
-void CheckElement (int[,] matrix, int element)   // Метод проверяющий наличие элемента введенного пользователем в массиве
+bool CheckElement (int [,] matrix, int element)   // Метод проверяющий наличие элемента в матрице
 {
     for (int i = 0; i < matrix.GetLength (0); i++)
     {
         for (int j = 0; j < matrix.GetLength (1); j++)
         {
-            if (matrix [i, j] != element)
-            {
-                Console.WriteLine ($"{element} -> такого числа в массиве нет");
-                break;        
-            }
-            else
+            if (matrix [i, j] == element) return true;
+        }
+    }
+    return false;        
+}
+
+void FindElement (int [,] matrix, int element)   // Метод нахождения элемента в матрице
+{
+    for (int i = 0; i < matrix.GetLength (0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength (1); j++)
+        {
+            if (matrix [i, j] == element) 
             {
                 Console.WriteLine ($"Число {element} находиться на позиции matrix ({i}, {j})");
-                break; 
             }
-            
-        }         
+        }
     }
+           
 }
 
 int rows = SetNumber ("Enter rows = ");
@@ -93,6 +79,11 @@ int[,] matrix = FillDualMassive (rows:rows, columns:columns, minValue:minValue, 
 PrintDualMassive (matrix);
 Console.WriteLine ();
 int element = SetNumber ("Enter element = ");
-CheckElement (matrix, element);
+bool result = CheckElement (matrix, element);
+if (result == true) FindElement (matrix, element);
+else Console.WriteLine ($"{element} -> такого числа нет в массиве");
+
+
+
 
 
