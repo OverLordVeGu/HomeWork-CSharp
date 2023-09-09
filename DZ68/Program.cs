@@ -12,7 +12,7 @@ int SetNumber(string message)  // Метод позволяющий пользо
     return number;
 }
 
-int Akkerman(int numberM, int numberN) // Метод вычесляющий функцию Аккермана
+int Akkerman(int numberM, int numberN) // Метод вычисляющий функцию Аккермана
 {
     if (numberM == 0)
     {
@@ -28,8 +28,8 @@ int Akkerman(int numberM, int numberN) // Метод вычесляющий фу
 }
 
 
-int numberM = SetNumber("Введи число M = ");
-int numberN = SetNumber("Введи число N = ");
+int numberM = SetNumber("Введите число M = ");
+int numberN = SetNumber("Введите число N = ");
 Console.Write(Akkerman(numberM, numberN));
 
 
