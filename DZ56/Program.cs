@@ -8,84 +8,80 @@
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
+Console.Clear();
 
-Console.Clear ();
-
-int SetNumber (string message)    // Метод позволяющий пользователю ввести число
+int SetNumber(string message)    // Метод позволяющий пользователю ввести число
 {
-    Console.Write (message);
-    int number = Convert.ToInt32 (Console.ReadLine ());
+    Console.Write(message);
+    int number = Convert.ToInt32(Console.ReadLine());
     return number;
 }
 
-int[,] FillDualMassive (int rows, int minValue, int columns, int maxValue)   // Метод заполняющий двумерный массив по заданным пользователем характеристикам
+int[,] FillDualMassive(int rows, int minValue, int columns, int maxValue)   // Метод заполняющий двумерный массив по заданным пользователем характеристикам
 {
     int[,] dualMassive = new int[rows, columns];
-    Random randomElement = new Random ();
+    Random randomElement = new Random();
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
         {
-            dualMassive[i, j] = randomElement.Next (minValue, maxValue);
+            dualMassive[i, j] = randomElement.Next(minValue, maxValue);
         }
     }
-    return dualMassive;   
+    return dualMassive;
 }
 
-void PrintDualMassive (int[,] matrix)     // Метод выводящий двумерный массив на экран
+void PrintDualMassive(int[,] matrix)     // Метод выводящий двумерный массив на экран
 {
-    for (int i = 0; i < matrix.GetLength (0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < matrix.GetLength (1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write ($"{matrix [i,j]} ");
+            Console.Write($"{matrix[i, j]} ");
         }
-        Console.WriteLine ();
+        Console.WriteLine();
     }
 }
 
-int[] SumRows (int[,] matrix) //Метод считающий суммы построчно и превращающий результаты в одномерный массив
+int[] SumRows(int[,] matrix) //Метод считающий суммы построчно и превращающий результаты в одномерный массив
 {
-    int[] sumArray = new int [matrix.GetLength(0)];
-    for (int i = 0; i < matrix.GetLength (0); i++)
+    int[] sumArray = new int[matrix.GetLength(0)];
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
         int sum = 0;
-        for (int j = 0; j < matrix.GetLength (1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            sum = sum + matrix [i,j];                                             
+            sum = sum + matrix[i, j];
         }
-        sumArray [i] = sum;               
+        sumArray[i] = sum;
     }
     return sumArray;
 }
 
-void FindMinimalElement (int [] array) // Метод выводящий строку с минимальной суммой
+void FindMinimalElement(int[] array) // Метод выводящий строку с минимальной суммой
 {
-    int min = array [0];
-    int i = 0;
-    int count = 1;
-    for (; i < array.Length; i++)
+    int minimalElement = array[0];
+    for (int i = 0; i < array.Length; i++)
     {
-        if (array [i] < min)
+        if (array[i] < minimalElement)
         {
-            min = array [i];
-            count++;
+            minimalElement = i;
         }
     }
-    Console.Write($"Строка № {count} имеет минимальную сумму элементов = {min}");
-    
+    Console.Write($"Строка № {minimalElement + 1} имеет минимальную сумму элементов");
+
 }
 
 
-int rows = SetNumber ("Enter rows = ");
-int columns = SetNumber ("Enter columns = ");
-int minValue = SetNumber ("Enter minimal value = ");
-int maxValue = SetNumber ("Enter maximal value = ");
-int[,] matrix = FillDualMassive (rows:rows, columns:columns, minValue:minValue, maxValue:maxValue);
-PrintDualMassive (matrix);
-Console.WriteLine ();
-int [] arraySumRows = SumRows (matrix);
+int rows = SetNumber("Enter rows = ");
+int columns = SetNumber("Enter columns = ");
+int minValue = SetNumber("Enter minimal value = ");
+int maxValue = SetNumber("Enter maximal value = ");
+int[,] matrix = FillDualMassive(rows: rows, columns: columns, minValue: minValue, maxValue: maxValue);
+PrintDualMassive(matrix);
+Console.WriteLine();
+int[] arraySumRows = SumRows(matrix);
 Console.Write(string.Join(", ", arraySumRows));
-Console.WriteLine ();
-FindMinimalElement (array);
+Console.WriteLine();
+FindMinimalElement(arraySumRows);
 
